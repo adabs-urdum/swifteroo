@@ -1,0 +1,60 @@
+BackgroundColor = rgba(255,200,50,0.2)
+ShadowColor = rgba(255,200,50,1)
+BorderColor = rgba(255,200,50,1)
+
+BackgroundColor = rgba(140,255,255,0.2)
+ShadowColor = rgba(140,255,255,1)
+BorderColor = rgba(140,255,255,1)
+
+AnimationDuration = 0.2s
+
+.swifteroo
+  position relative
+  width 60vmin
+  height 60vmin
+  background BackgroundColor
+  transform perspective(350px)
+  perspective 350px
+  -moz-perspective 350px
+  -webkit-perspective 350px
+  transform-style preserve-3d
+  transform-origin 50% 50%
+  transform-box fill-box
+  transition transform-origin AnimationDuration ease-out, transform AnimationDuration ease-out
+  border-radius 1vmin
+  border solid BorderColor 0.1vmin
+  box-shadow 0 0 10vmin ShadowColor
+  display flex
+  justify-content center
+  align-items center
+
+  &__content
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+
+  for num in (1..11)
+    &__inner:nth-child({num})
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      display flex
+      justify-content center
+      align-items center
+      background BackgroundColor
+      box-shadow 'inset 0 0 0.5vmin %s' % (ShadowColor)
+      border-radius 1vmin
+      transform-style preserve-3d
+      transform-box fill-box
+      border solid BorderColor 0.1vmin
+      z-index num
+      pointer-events none
+      transform translateZ('-%s0px' % (num * 2))
